@@ -4,7 +4,9 @@ version = "0.1.0"
 description = "Generate differences"
 authors = ["Ruslan Shamsutdinov"]
 readme = "README.md"
-packages = [{include = "gendiff"}]
+packages = [
+  { include = "gendiff" },
+]
 
 [tool.poetry.dependencies]
 python = "^3.9"
