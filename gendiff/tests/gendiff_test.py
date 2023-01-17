@@ -1,4 +1,4 @@
-from gendiff import gen_diff
+from gendiff.generate_diff import gen_diff
 from gendiff.tools import load_file
 import pytest
 
