@@ -1,7 +1,7 @@
 # flake8: noqa: C901
 def diff_to_dict(diff):
     result = {}
-
+    print(diff)
     def add_space(value):
         result = {}
         if isinstance(value, dict):
@@ -44,8 +44,8 @@ def stylish(result_dict):
             target_str = target_str.replace(i, j)
         return target_str
 
-    string = f'{{\n{dict_to_string(diff_to_dict(result_dict))}}}'
     replace_values = {"False": "false", "True": "true",
                       "None": "null", ": \n": ":\n"}
+    string = f'{{\n{dict_to_string(diff_to_dict(result_dict))}}}'
     result = multiple_replace(string, replace_values)
     return result
