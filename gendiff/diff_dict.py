@@ -38,3 +38,30 @@ def diff_dict(old_dict, new_dict):
                 'VALUE': value,
             }
     return result
+
+
+def diff_to_concatenated_dict(diff):
+    result = {}
+
+    def add_space(value):
+        result = {}
+        if isinstance(value, dict):
+            for nested_key, nested_value in value.items():
+                result[f'  {nested_key}'] = add_space(nested_value)
+        else:
+            return value
+        return result
+
+    for key, value in sorted(diff.items()):
+        if value['TYPE'] == 'NESTED':
+            result[f'  {key}'] = diff_to_concatenated_dict(value['VALUE'])
+        if value['TYPE'] == 'UNCHANGED':
+            result[f'  {key}'] = add_space(value['VALUE'])
+        if value['TYPE'] == 'CHANGED':
+            result[f'- {key}'] = add_space(value['VALUE']['OLD'])
+            result[f'+ {key}'] = add_space(value['VALUE']['NEW'])
+        if value['TYPE'] == 'ADDED':
+            result[f'+ {key}'] = add_space(value['VALUE'])
+        if value['TYPE'] == 'DELETED':
+            result[f'- {key}'] = add_space(value['VALUE'])
+    return result

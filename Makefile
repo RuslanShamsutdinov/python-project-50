@@ -5,7 +5,7 @@ build:
 publish:
 	poetry publish --dry-run
 package-install:
-	python3 -m pip install --user dist/*.whl
+	python -m pip install --user dist/*.whl
 check:
 	poetry run flake8 gendiff
 test:
@@ -13,8 +13,8 @@ test:
 test-coverage:
 	poetry run pytest --cov=gendiff --cov-report xml
 run:
-	gendiff file3.json file4.json --format stylish
+	poetry run gendiff file3.json file4.json --format stylish
 run2:
-	gendiff file3.json file4.json --format plain
+	poetry run gendiff file3.json file4.json --format plain
 run3:
-	gendiff file3.json file4.json --format json
+	poetry run gendiff file3.json file4.json --format json
