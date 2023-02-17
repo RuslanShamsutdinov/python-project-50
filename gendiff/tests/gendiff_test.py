@@ -1,20 +1,24 @@
-from gendiff.gen_diff import generate_diff
+from gendiff.main import generate_diff
 from gendiff.cli import parser_args
 from gendiff.utilities import load_file
 import pytest
 import sys
 
 
-@pytest.mark.parametrize('file1, file2, expected', [
-    ('file1.json', 'file2.json',
-     load_file('gendiff', 'tests', 'fixtures', 'result1.txt')),
-    ('file1.yml', 'file2.yml',
-     load_file('gendiff', 'tests', 'fixtures', 'result1.txt')),
-    ('file3.json', 'file4.json',
-     load_file('gendiff', 'tests', 'fixtures', 'result2.txt')),
+@pytest.mark.parametrize('file1, file2, format_result, expected', [
+    ('file1.json', 'file2.json', 'stylish',
+     load_file('gendiff', 'tests', 'fixtures', 'result1')),
+    ('file1.yml', 'file2.yml', 'stylish',
+     load_file('gendiff', 'tests', 'fixtures', 'result1')),
+    ('file3.json', 'file4.json', 'stylish',
+     load_file('gendiff', 'tests', 'fixtures', 'result_stylish')),
+    ('file3.json', 'file4.json', 'plain',
+     load_file('gendiff', 'tests', 'fixtures', 'result_plain')),
+    ('file3.json', 'file4.json', 'json',
+     load_file('gendiff', 'tests', 'fixtures', 'result_json')),
 ])
-def test_generate_diff(file1, file2, expected):
-    diff = generate_diff(file1, file2)
+def test_generate_diff(file1, file2, format_result, expected):
+    diff = generate_diff(file1, file2, format_result)
     assert diff == expected
 
 

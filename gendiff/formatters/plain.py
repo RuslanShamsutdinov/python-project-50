@@ -1,3 +1,4 @@
+# flake8: noqa: C901
 def plain(diff, path=''):
     def output_matching(input_value):
         match_dict = {True: 'true', False: 'false', None: 'null'}
@@ -14,12 +15,14 @@ def plain(diff, path=''):
         if value['TYPE'] == 'NESTED':
             result += plain(value['VALUE'], f'{key}')
         elif value['TYPE'] == 'CHANGED':
-            result += f"Property '{key}' was updated. From {output_matching(value['VALUE']['OLD'])} " \
+            result += f"Property '{key}' was updated. From " \
+                      f"{output_matching(value['VALUE']['OLD'])} " \
                       f"to {output_matching(value['VALUE']['NEW'])}\n"
         elif value['TYPE'] == 'UNCHANGED':
             result += ''
         elif value['TYPE'] == 'ADDED':
-            result += f"Property '{key}' was added with value: {output_matching(value['VALUE'])}\n"
+            result += f"Property '{key}' was added with value: " \
+                      f"{output_matching(value['VALUE'])}\n"
         elif value['TYPE'] == 'DELETED':
             result += f"Property '{key}' was removed\n"
     return result

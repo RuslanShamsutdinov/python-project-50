@@ -1,7 +1,10 @@
+from gendiff.utilities import multiple_replace
+
+
 # flake8: noqa: C901
 def diff_to_dict(diff):
     result = {}
-    print(diff)
+
     def add_space(value):
         result = {}
         if isinstance(value, dict):
@@ -38,12 +41,6 @@ def stylish(result_dict):
             else:
                 result_string += f'{tab * (lvl + 1)}{key}: {Dict[key]}\n'
         return result_string
-
-    def multiple_replace(target_str, replace_words):
-        for i, j in replace_words.items():
-            target_str = target_str.replace(i, j)
-        return target_str
-
     replace_values = {"False": "false", "True": "true",
                       "None": "null", ": \n": ":\n"}
     string = f'{{\n{dict_to_string(diff_to_dict(result_dict))}}}'

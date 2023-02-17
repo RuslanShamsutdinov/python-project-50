@@ -17,4 +17,4 @@ run:
 run2:
 	gendiff file3.json file4.json --format plain
 run3:
-	gendiff file1.json file2.json --format plain
+	gendiff file3.json file4.json --format json

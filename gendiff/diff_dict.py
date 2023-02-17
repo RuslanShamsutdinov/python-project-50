@@ -1,18 +1,3 @@
-from gendiff.utilities import load_file
-from gendiff.formatters.stylish import stylish
-from gendiff.formatters.plain import plain
-
-
-def generate_diff(filename1, filename2, format_result='stylish'):
-    file1 = load_file('gendiff', 'tests', 'fixtures', filename1)
-    file2 = load_file('gendiff', 'tests', 'fixtures', filename2)
-    result = diff_dict(file1, file2)
-    if format_result == 'stylish':
-        return stylish(result)
-    if format_result == 'plain':
-        return plain(result)[:-1]
-
-
 # flake8: noqa: C901
 def diff_dict(old_dict, new_dict):
     result = {}

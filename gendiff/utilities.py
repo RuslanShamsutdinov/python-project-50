@@ -12,3 +12,9 @@ def load_file(*args):
             return yaml.safe_load(file)
         else:
             return file.read()
+
+
+def multiple_replace(target_str, replace_words):
+    for i, j in replace_words.items():
+        target_str = target_str.replace(i, j)
+    return target_str
