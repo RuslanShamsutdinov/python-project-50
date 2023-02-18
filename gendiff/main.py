@@ -1,8 +1,8 @@
-from gendiff.utilities import load_file
-from gendiff.formatters.stylish import stylish
-from gendiff.formatters.plain import plain
-from gendiff.formatters.json import json_format
-from gendiff.diff_dict import diff_dict
+from .utilities import load_file
+from .formatters.stylish import stylish
+from .formatters.plain import plain
+from .formatters.json import json_format
+from .diff_dict import diff_dict
 
 
 def generate_diff(filename1, filename2, format_result='stylish'):
