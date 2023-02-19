@@ -1,7 +1,7 @@
 # flake8: noqa: C901
 def plain(diff, path=''):
     def output_matching(input_value):
-        match_dict = {True: 'true', False: 'false', None: 'null'}
+        match_dict = {True: 'true', 0: '0', False: 'false', None: 'null'}
         if isinstance(input_value, dict):
             return "[complex value]"
         elif input_value in match_dict:
