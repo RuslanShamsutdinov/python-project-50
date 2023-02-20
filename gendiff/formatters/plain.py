@@ -1,11 +1,18 @@
 # flake8: noqa: C901
 def plain(diff, path=''):
+    print(diff)
+
     def output_matching(input_value):
         match_dict = {True: 'true', 0: '0', False: 'false', None: 'null'}
         if isinstance(input_value, dict):
             return "[complex value]"
         elif input_value in match_dict:
-            return match_dict[input_value]
+            if type(input_value) == int:
+                return 0
+            else:
+                return match_dict[input_value]
+        if input_value is None:
+            return 'null'
         else:
             return f"'{input_value}'"
 
