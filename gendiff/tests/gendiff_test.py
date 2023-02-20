@@ -7,15 +7,15 @@ import sys
 
 @pytest.mark.parametrize('file1, file2, format_result, expected', [
     ('file1.json', 'file2.json', 'stylish',
-     load_file('gendiff', 'tests', 'fixtures', 'result1')),
+     load_file('gendiff', 'tests', 'fixtures', 'result1_stylish.txt')),
     ('file1.yml', 'file2.yml', 'stylish',
-     load_file('gendiff', 'tests', 'fixtures', 'result1')),
+     load_file('gendiff', 'tests', 'fixtures', 'result1_stylish.txt')),
     ('file3.json', 'file4.json', 'stylish',
-     load_file('gendiff', 'tests', 'fixtures', 'result_stylish')),
+     load_file('gendiff', 'tests', 'fixtures', 'result2_stylish.txt')),
     ('file3.json', 'file4.json', 'plain',
-     load_file('gendiff', 'tests', 'fixtures', 'result_plain')),
+     load_file('gendiff', 'tests', 'fixtures', 'result2_plain.txt')),
     ('file3.json', 'file4.json', 'json',
-     load_file('gendiff', 'tests', 'fixtures', 'result_json')),
+     load_file('gendiff', 'tests', 'fixtures', 'result2_json.txt')),
 ])
 def test_generate_diff(file1, file2, format_result, expected):
     diff = generate_diff(file1, file2, format_result)

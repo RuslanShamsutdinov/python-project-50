@@ -16,7 +16,7 @@ def stylish(result_dict):
         return result_string
 
     replace_values = {"False": "false", "True": "true",
-                      "None": "null", ": \n": ": \n"}
+                      "None": "null"}
     string = f'{{\n{dict_to_string(diff_to_concatenated_dict(result_dict))}}}'
     result = multiple_replace(string, replace_values)
     return result

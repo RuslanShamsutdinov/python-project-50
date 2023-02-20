@@ -1,6 +1,5 @@
 {
-  "timeout": null,
+  "timeout": 20,
   "verbose": true,
-  "host": "hexlet.io",
-  "goggle": {"qoq": "gog"}
+  "host": "hexlet.io"
 }

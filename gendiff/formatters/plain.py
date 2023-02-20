@@ -10,8 +10,6 @@ def plain(diff, path=''):
                 return 0
             else:
                 return match_dict[input_value]
-        if input_value is None:
-            return 'null'
         else:
             return f"'{input_value}'"
 
