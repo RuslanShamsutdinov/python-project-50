@@ -1,6 +1,5 @@
 # flake8: noqa: C901
 def plain(diff, path=''):
-    print(diff)
 
     def output_matching(input_value):
         match_dict = {True: 'true', 0: '0', False: 'false', None: 'null'}
