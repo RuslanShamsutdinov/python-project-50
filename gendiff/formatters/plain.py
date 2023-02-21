@@ -1,4 +1,5 @@
 # flake8: noqa: C901
+# flake8: noqa: W605
 def plain(diff, path=""):
     def output_matching(input_value):
         match_dict = {True: "true", 0: "0", False: "false", None: "null"}

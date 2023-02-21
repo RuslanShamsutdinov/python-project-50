@@ -2,6 +2,7 @@ from gendiff.utilities import multiple_replace
 from gendiff.diff_dict import diff_to_concatenated_dict
 
 
+# flake8: noqa: W605
 def stylish(result_dict):
     def dict_to_string(Dict, lvl=0):
         tab = "  "
