@@ -33,7 +33,7 @@ Help:
     gendiff -h
 
 Minimum requirements:
-- python = ">=3.8.1,<4.0"
+- python = ">=3.8.1,<4.0" 
 
 JSON file comparison("stylish" default formatter key):
 
