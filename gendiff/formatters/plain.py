@@ -1,5 +1,7 @@
 # flake8: noqa: C901
-# flake8: noqa: W605
+import gendiff.diff_dict as dd
+
+
 def plain(diff, path=""):
     def output_matching(input_value):
         match_dict = {True: "true", 0: "0", False: "false", None: "null"}
@@ -16,21 +18,21 @@ def plain(diff, path=""):
     result = ""
     for key, value in sorted(diff.items()):
         key = f"{path}.{key}" if path else key
-        if value["TYPE"] == "NESTED":
+        if value["TYPE"] == dd.NESTED:
             result += plain(value["VALUE"], f"{key}")
-        elif value["TYPE"] == "CHANGED":
+        elif value["TYPE"] == dd.CHANGED:
             result += (
                 f"Property '{key}' was updated. From "
                 f"{output_matching(value['VALUE']['OLD'])} "
                 f"to {output_matching(value['VALUE']['NEW'])}\n"
             )
-        elif value["TYPE"] == "UNCHANGED":
+        elif value["TYPE"] == dd.UNCHANGED:
             result += ""
-        elif value["TYPE"] == "ADDED":
+        elif value["TYPE"] == dd.ADDED:
             result += (
                 f"Property '{key}' was added with value: "
                 f"{output_matching(value['VALUE'])}\n"
             )
-        elif value["TYPE"] == "DELETED":
+        elif value["TYPE"] == dd.DELETED:
             result += f"Property '{key}' was removed\n"
     return result
