@@ -9,5 +9,3 @@ def parse(file, filetype):
         return yaml.safe_load(file)
     else:
         raise ValueError('Unknown file extension')
-
-
